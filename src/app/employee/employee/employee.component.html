@@ -1,0 +1,51 @@
+<table Class="table">
+    <thead>
+        <tr>
+            <th> 
+                <input type="checkbox" [(ngModel)]="checkAllStatus" (change)="checkAll">
+                {{checkAllStatus}}
+            </th>
+            <th>S1. Number</th>
+            <th>Emp. Number</th>
+            <th>Emp. Name</th>
+            <th>Emp. Salary</th>
+            <th>Emp. Address</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let emp of employees; let i=index;">
+            <td>
+                <input type="checkbox" [(ngModel)]="emp.isSelected">
+                {{emp.isSelected}}
+            </td>
+            <td>{{i+1}}</td>
+            <td>{{emp.empNumber}}</td>
+            <td>{{emp.empName}}</td>
+            <td>{{emp.empSalary}}</td>
+            <td>{{emp.empAddress==null?'--':emp.empAddress}}</td>
+        </tr>
+    </tbody>
+</table> 
+
+<br>
+<a [routerLink]="[]" routerLinkActive="router-Link-active" (click)="selectTab(1)">Tab-1</a> &nbsp; | &nbsp;
+<a [routerLink]="[]" routerLinkActive="router-Link-active" (click)="selectTab(2)">Tab-2</a> &nbsp; | &nbsp;
+<a [routerLink]="[]" routerLinkActive="router-Link-active" (click)="selectTab(3)">Tab-3</a> &nbsp; | &nbsp;
+<a [routerLink]="[]" routerLinkActive="router-Link-active" (click)="selectTab(4)">Tab-4</a> <br>
+
+<div [ngSwitch]="1">
+    <div *ngSwitchCase="1">output - 1</div>
+    <div *ngSwitchCase="2">output - 2</div>
+    <div *ngSwitchCase="3">output - 3</div>
+    <div *ngSwitchCase="4">output - 4</div>
+
+    <div *ngSwitchDefault>Invalid Choice</div>
+</div>
+<br>
+<br>
+<div *ngIf="empStatus">
+
+    <div  *ngFor="let emp of employees">
+        <p> {{emp.empName}}</p>
+    </div>
+</div>
